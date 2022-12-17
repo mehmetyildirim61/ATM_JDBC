@@ -83,9 +83,9 @@ public class Runner {
                     break;
                 case '6':
                     islemDevamMi = false;
+                    break;
                 default:
-                    System.out.println("Yanlis giris yaptiniz.");
-                    islemDevamMi = false;
+                    System.out.println("Yanlis giris yaptiniz.\nLutfen 1 ile 6 arasi secim yapiniz");
             }
         }
         System.out.println("Bankamizi kullandiginiz icin tesekkur ederiz.\n!!!Kartinizi almayi unutmayiniz!!!");
@@ -116,8 +116,7 @@ public class Runner {
             double hesabaYatirilanMiktar = input.nextDouble();
             System.out.println("Paraniz tanimlaniyor...\nYatirilan miktar: " + hesabaYatirilanMiktar);
             guncelBakiye += hesabaYatirilanMiktar;
-            String sql1 = "UPDATE bankaMusterileri SET Hesaptaki_Tutar_TL=? WHERE Kart_no=?";
-            PreparedStatement pst1 = connection.prepareStatement(sql1);
+            PreparedStatement pst1 = connection.prepareStatement(sql3);
             pst1.setString(2, kartNo);
             pst1.setDouble(1, guncelBakiye);
             pst1.executeUpdate();
